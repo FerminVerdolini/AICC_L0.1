@@ -14,22 +14,28 @@
 #define READ_GPIO(dir) (*(volatile unsigned int *)dir)
 #define WRITE_GPIO(dir, value) { (*(volatile unsigned int *)dir) = (value); }
 
+#include <stdio.h>
+#include <stdlib.h>
+
 int main(void)
 {
     int A[12] = {0,1,2,7,-8,4,5,12,11,-2,6,3};
-    int B[12];
+    int *B = NULL;
     int i, j = 0;
 
     for (i = 0; i < 12; i++)
     {
         if (A[i] > 0 && A[i] % 2 == 0)
         {
+            B = realloc(B, (j + 1) * sizeof(int));
             B[j] = A[i];
             j++;
         }
     }
 
     printfNexys("numero de elementos de B: %d\n", j);
+
+    free(B);
 
     return 0;
 }
