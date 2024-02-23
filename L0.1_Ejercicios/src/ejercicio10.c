@@ -6,6 +6,7 @@ variable definida estáticamente dentro del programa. Guarde el programa como Fa
 
 #include <stdio.h>
 
+/* Valor indicado en consigna*/
 #define N 7
 
 __uint32_t factorial(__uint32_t num);
@@ -17,6 +18,7 @@ int main(void)
     return 0;
 }
 
+/*Función que ejecuta la operación factorial al llamarse recursivamente*/
 __uint32_t factorial(__uint32_t num){
     if (num == 0 || num == 1) return 1;
     else if (num > 1) return num*(factorial(num-1));
