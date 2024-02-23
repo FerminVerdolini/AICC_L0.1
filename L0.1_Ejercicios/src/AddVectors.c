@@ -17,15 +17,18 @@
 
 int main(void)
 {
+    /*Se crean los vectores que hacen de sumandos y el resultante*/
     int A[12] = {0,1,2,7,-8,4,5,12,11,-2,6,3};
     int B[12] = {9,8,7,6,5,4,3,2,1,0,-1,-2};
     int C[12];
 
+    /*Se recorren los vectores y se realiza la operación*/
     for(int i=0; i<12; i++)
     {
         C[i] = A[i] + B[i];
     }
 
+    /* Se imprime la suma resultante con el método para la placa*/
     for(int i=0; i<12; i++)
     {
        printfNexys("C[%d] = %d", i, C[i]);
