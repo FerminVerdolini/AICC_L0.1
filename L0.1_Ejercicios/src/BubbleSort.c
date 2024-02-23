@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/*Valor de tamaño de arreglo solicitado en la consigna*/
 #define N 12
 
 void bubble(__uint32_t * V);
@@ -27,6 +28,12 @@ int main(void)
     return 0;
 }
 
+/*
+Función que realiza el ordenamiento burbuja de manera ascendente:
+	- Recorre todo el arreglo
+	- Si el elemento actual es mayor que el siguiente los cambia de
+	posición (utilizando una variable auxiliar) 
+*/
 void bubble(__uint32_t * V){
     __uint32_t aux;
     __uint8_t sort;
