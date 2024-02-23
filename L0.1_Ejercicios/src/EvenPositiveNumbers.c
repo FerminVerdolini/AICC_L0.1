@@ -19,10 +19,13 @@
 
 int main(void)
 {
+    /* Se crean los dos vectores y contadores para recorrer */
     int A[12] = {0,1,2,7,-8,4,5,12,11,-2,6,3};
     int *B = NULL;
     int i, j = 0;
 
+    /* Se recorre el arreglo y, si se encuentra un par positivo, se agrega
+    memoria dinámica para almacenar el valor en el segundo vector */
     for (i = 0; i < 12; i++)
     {
         if (A[i] > 0 && A[i] % 2 == 0)
