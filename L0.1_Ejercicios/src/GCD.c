@@ -19,6 +19,7 @@ int main(void)
     return 0;
 }
 
+/* Función que devuelve el máximo común divisor entre dos números */
 __uint32_t gcd(__uint32_t a, __uint32_t b){
     if (b == 0){
         return a;
