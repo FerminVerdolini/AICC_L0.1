@@ -14,27 +14,32 @@
 #include <stdio.h>
 #include <unistd.h>
 
+// Tamaño de la serie solicitado en la consigna
 #define N 12
 
-void fibonacci(__uint32_t *V, __uint8_t *j);
+void fibonacci(__uint32_t *V, __uint32_t num);
 
 int main(void) 
 {
-    __uint8_t i =0;
     __uint32_t V[N];
 
-    fibonacci(V,&i);
+    fibonacci(V,N);
 
     return 0;
 }
 
-void fibonacci(__uint32_t *V, __uint8_t *j){
-    V[*j]=0;
-    for(__uint32_t i = 0; i<j;i++){
-        V[*j] += V[i];
+/* Función que calcula la serie Fibonacci.
+Parámetros: arreglo V, de tamaño num*/
+void fibonacci(__uint32_t *V, __uint32_t num) {
+    if (num < 1) {
+        return;
     }
-    j++;
-    if (j>N){
-        fibonacci(V,&j);
+
+    V[0] = 0;
+    if (num > 1) {
+        V[1] = 1;
+        for (int i = 2; i < num; i++) {
+            V[i] = V[i - 1] + V[i - 2];
+        }
     }
 }
