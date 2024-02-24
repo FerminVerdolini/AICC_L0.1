@@ -11,20 +11,24 @@
 #define GPIO_INOUT  0x80001408
 
 #define READ_GPIO(dir) (*(volatile unsigned int *)(dir))
-#define WRITE_GIPO(dir, value) { (*(volatile unsigned int *)(dir)) = (value); }
+#define WRITE_GPIO(dir, value) { (*(volatile unsigned int *)(dir)) = (value); }
 
 int main() {
 
     int En_value = 0x0000FFFF; // switches como entrada y leds como salida
     int switches_value;
 
-    WRITE_GIPO(GPIO_INOUT, En_value);
+    WRITE_GPIO(GPIO_INOUT, En_value);
 
+    /* Constantemente lee el valor de los switches y desplaza
+    ese valor, negado, las posiciones para los leds
+    y hace un sleep para mostrar el valor
+    */
     while (1)
     {
         switches_value = READ_GPIO(GPIO_SWs);
         switches_value = (~switches_value) >> 16;
-        WRITE_GIPO(GPIO_LEDs, switches_value);
+        WRITE_GPIO(GPIO_LEDs, switches_value);
         unsleep(100000);
     }
 
