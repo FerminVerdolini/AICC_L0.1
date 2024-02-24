@@ -23,11 +23,15 @@ int main (void)
 
     while(1)
     {
+        // primer sumando: 4 bits menos significativos
         value1 = READ_GPIO(GPIO_SWs) & 0x0000000F;
+        // segundo sumando: 4 bits más significativos
         value2 = (READ_GPIO(GPIO_SWs) & 0x000000F0) >> 4;
         result = value1 + value2;
+        // resultado: 4 bits menos significativos de los leds
         WRITE_GPIO(GPIO_LEDs, result);
 
+        // si hay overflow, pone un 1 en el quinto bit de los leds
         if(result > 15){
             WRITE_GPIO(GPIO_LEDs, (READ_GPIO(GPIO_LEDs) | 0x00010000));
         }
