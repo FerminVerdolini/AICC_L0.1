@@ -26,12 +26,16 @@ int main(void)
 
     while (1) 
     {
+    	/* se lee el valor de los switches y se desplaza 16 posiciones
+    	para proyectar en los leds y se duerme para mostrar*/
         switches_value = READ_GPIO(GPIO_SWs);
         switches_value = switches_value >> 16;
 
         WRITE_GPIO(GPIO_LEDs, switches_value);
         usleep(500000); // Espera 500ms
         
+        /* Luego de dormirse, apaga todos los leds y se 
+        duerme un tiempo para volver a leer*/
         WRITE_GPIO(GPIO_LEDs, 0);
         usleep(500000); // Espera 500ms
     }
